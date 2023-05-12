@@ -35,13 +35,20 @@ namespace SuperHeroAPI.Controllers
 
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<SuperHero>>> getAllHero(int id)
+        public async Task<ActionResult<SuperHero>> getHero(int id)
         {
             var hero = superHero.Find(x => x.Id == id);
 
-            if (hero is null) { 
+            if (hero is null) {
                 return NotFound("Sorry the hero is not found");
             }
+            return Ok(hero);
+
+        }
+        [HttpPost]
+        public async Task<ActionResult<SuperHero>> addHero(SuperHero hero)
+        {
+            superHero.Add(hero);
             return Ok(hero);
 
         }
