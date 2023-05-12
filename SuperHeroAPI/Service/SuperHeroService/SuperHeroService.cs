@@ -34,7 +34,7 @@
             throw new NotImplementedException();
         }
 
-        public SuperHero getH(int id)
+        public SuperHero getHero(int id)
         {
             throw new NotImplementedException();
         }
@@ -44,9 +44,19 @@
             throw new NotImplementedException();
         }
 
-        public SuperHero updateHero(int id, SuperHero hero) {
+        public SuperHero updateHero(int id, SuperHero req) {
+            var hero = superHero.Find(x => x.Id == id);
 
-            throw new NotImplementedException();
+            if (hero is null)
+            {
+                return null;
+            }
+            hero.Name = req.Name;
+            hero.FirstName = req.FirstName;
+            hero.LastName = req.LastName;
+            hero.Place = req.Place;
+
+            return hero; 
         }
     }
 }

@@ -10,6 +10,8 @@
 
         SuperHero removeHero(int id);
 
+        SuperHero updateHero(int id,SuperHero req);
+
 
     }
 }

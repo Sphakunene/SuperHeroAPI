@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SuperHeroAPI.Model;
+using SuperHeroAPI.Service.SuperHeroService;
 
 namespace SuperHeroAPI.Controllers
 {
@@ -7,7 +8,12 @@ namespace SuperHeroAPI.Controllers
     [ApiController]
     public class SuperHeroController : Controller
     {
-   
+        private readonly ISuperHeroService _superHeroService;
+
+        public SuperHeroController(ISuperHeroService superHeroService)
+        {
+            _superHeroService=superHeroService;
+        }
 
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> getAllHeroes()
@@ -38,18 +44,14 @@ namespace SuperHeroAPI.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<SuperHero>> updateHero(int id, SuperHero _hero)
         {
-            var hero = superHero.Find(x => x.Id == id);
+            var result = _superHeroService.updateHero(id, _hero);
 
-            if (hero is null)
-            {
-                return NotFound("Sorry the hero is not found");
+            if (result is null) {
+                return  NotFound("Super Hero not Found!");
             }
-            hero.Name = _hero.Name;
-            hero.FirstName = _hero.FirstName;
-            hero.LastName = _hero.LastName;
-            hero.Place = _hero.Place;
+            return Ok(result);
 
-            return Ok(hero);
+            
         }
 
         [HttpDelete("{id}")]
