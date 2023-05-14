@@ -26,22 +26,28 @@
         };
         public SuperHero addHero(SuperHero hero)
         {
-            throw new NotImplementedException();
+            superHero.Add(hero);
+
+            return hero;
         }
 
         public List<SuperHero> getAllHeroes()
         {
-            throw new NotImplementedException();
+            return superHero;
         }
 
         public SuperHero getHero(int id)
         {
-            throw new NotImplementedException();
+            SuperHero result = superHero.Find(x => x.Id == id);
+
+            return result;
         }
 
         public SuperHero removeHero(int id)
         {
-            throw new NotImplementedException();
+            var result = superHero.Find(x => x.Id == id);
+            superHero.Remove(result); 
+            return result;
         }
 
         public SuperHero updateHero(int id, SuperHero req) {

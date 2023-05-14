@@ -18,25 +18,25 @@ namespace SuperHeroAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> getAllHeroes()
         {
-            return Ok(superHero);
+            List<SuperHero> result = _superHeroService.getAllHeroes();
+          
+            return Ok(result);
 
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<SuperHero>> getHero(int id)
         {
-            var hero = superHero.Find(x => x.Id == id);
-
-            if (hero is null)
-            {
-                return NotFound("Sorry the hero is not found");
+            SuperHero result = _superHeroService.getHero(id);
+            if (result is null) {
+                return NotFound("Super Hero Not Found!");
             }
-            return Ok(hero);
+            return Ok(result);
 
         }
         [HttpPost]
         public async Task<ActionResult<SuperHero>> addHero(SuperHero hero)
         {
-            superHero.Add(hero);
+            _superHeroService.addHero(hero);
             return Ok(hero);
 
         }
@@ -57,15 +57,10 @@ namespace SuperHeroAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<SuperHero>> deleteHero(int id)
         {
-            var hero = superHero.Find(x => x.Id == id);
+            _superHeroService.removeHero(id);
 
-            if (hero is null)
-            {
-                return NotFound("Sorry the hero is not found");
-            }
-           superHero.Remove(hero);
 
-            return Ok(hero);
+            return Ok();
         }
     }
 }

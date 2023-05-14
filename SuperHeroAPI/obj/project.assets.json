@@ -460,19 +460,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {}
+    "C:\\Users\\SPHA\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\SuperHeroAPI.csproj",
+      "projectUniqueName": "C:\\Users\\SPHA\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\SuperHeroAPI.csproj",
       "projectName": "SuperHeroAPI",
-      "projectPath": "C:\\Users\\user\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\SuperHeroAPI.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\obj\\",
+      "projectPath": "C:\\Users\\SPHA\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\SuperHeroAPI.csproj",
+      "packagesPath": "C:\\Users\\SPHA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\SPHA\\Desktop\\Entity Framework\\SuperHero\\SuperHeroAPI\\SuperHeroAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\SPHA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
