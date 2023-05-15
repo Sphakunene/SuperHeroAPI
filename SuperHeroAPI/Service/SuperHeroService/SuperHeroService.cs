@@ -1,8 +1,16 @@
-﻿namespace SuperHeroAPI.Service.SuperHeroService
+﻿using Microsoft.EntityFrameworkCore;
+using SuperHeroAPI.Data_Access;
+
+namespace SuperHeroAPI.Service.SuperHeroService
 {
     public class SuperHeroService : ISuperHeroService
     {
 
+        private readonly SuperHeroDBContext dbContext;
+        public SuperHeroService(SuperHeroDBContext superHeroDBContext)
+        {
+            dbContext = superHeroDBContext;
+        }
         private static List<SuperHero> superHero = new List<SuperHero> {
 
             new SuperHero { Id = 1,
@@ -24,33 +32,38 @@
                 Place="bangkok"
             }
         };
-        public SuperHero addHero(SuperHero hero)
+        public async Task<SuperHero> addHero(SuperHero req)
         {
-            superHero.Add(hero);
+            superHero.Add(req);
 
-            return hero;
+            return req;
         }
 
-        public List<SuperHero> getAllHeroes()
+        public  async Task<List<SuperHero>> getAllHeroes()
         {
-            return superHero;
+            var hero = await dbContext.superHeroes.ToListAsync();
         }
 
-        public SuperHero getHero(int id)
+        public async Task<SuperHero> getHero(int id)
         {
-            SuperHero result = superHero.Find(x => x.Id == id);
+            SuperHero result =   superHero.Find((x => x.Id == id));
+
+            if (result == null)
+            {
+                return null;
+            }
 
             return result;
         }
 
-        public SuperHero removeHero(int id)
+        public async Task<SuperHero> removeHero(int id)
         {
             var result = superHero.Find(x => x.Id == id);
             superHero.Remove(result); 
             return result;
         }
 
-        public SuperHero updateHero(int id, SuperHero req) {
+        public async Task<SuperHero> updateHero(int id, SuperHero req) {
             var hero = superHero.Find(x => x.Id == id);
 
             if (hero is null)

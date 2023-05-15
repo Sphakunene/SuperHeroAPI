@@ -18,7 +18,7 @@ namespace SuperHeroAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SuperHero>>> getAllHeroes()
         {
-            List<SuperHero> result = _superHeroService.getAllHeroes();
+            List<SuperHero> result = await _superHeroService.getAllHeroes();
           
             return Ok(result);
 
@@ -26,7 +26,7 @@ namespace SuperHeroAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<SuperHero>> getHero(int id)
         {
-            SuperHero result = _superHeroService.getHero(id);
+            SuperHero result =  await _superHeroService.getHero(id);
             if (result is null) {
                 return NotFound("Super Hero Not Found!");
             }
@@ -60,7 +60,7 @@ namespace SuperHeroAPI.Controllers
             _superHeroService.removeHero(id);
 
 
-            return Ok();
+            return Ok(); 
         }
     }
 }

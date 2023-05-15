@@ -2,15 +2,15 @@
 {
     public interface ISuperHeroService
     {
-        List<SuperHero> getAllHeroes();
+       Task<List<SuperHero>> getAllHeroes();
 
-        SuperHero getHero(int id);
+        Task<SuperHero> getHero(int id);
 
-        SuperHero addHero(SuperHero hero);
+        Task<SuperHero> addHero(SuperHero req);
 
-        SuperHero removeHero(int id);
+        Task<SuperHero> removeHero(int id);
 
-        SuperHero updateHero(int id,SuperHero req);
+       Task<SuperHero> updateHero(int id,SuperHero req);
 
 
     }

@@ -1,4 +1,9 @@
 global using SuperHeroAPI.Model;
+using SuperHeroAPI.Service.SuperHeroService;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using SuperHeroAPI.Data_Access;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<ISuperHeroService,SuperHeroService>();
+builder.Services.AddDbContext<SuperHeroDBContext>(option => option.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog = DbSuperHero,Integrated Security=True;"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
